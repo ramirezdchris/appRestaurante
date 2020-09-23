@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_5x"
+            android:layout_marginTop="@dimen/space_5x"
+            android:layout_marginEnd="@dimen/space_5x"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_track_order_option" />
+
+            <EditText
+                android:id="@+id/direccionTxt1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:autofillHints="asd"
+                android:hint="Direccion"
+                android:inputType="text"
+                android:textColorHint="@color/purple" />
+
+            <EditText
+                android:id="@+id/direccionTxt2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:autofillHints="asd"
+                android:hint="Colonia,Calle,Residencia"
+                android:inputType="text"
+                android:textColorHint="@color/purple" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="66dp">
+
+                <TextView
+                    android:id="@+id/direccionTxt3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:text="Ubicacion" />
+
+                <Button
+                    android:id="@+id/proceCarBtnSelecLc"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/quantum_googblue50"
+                    android:text="Seleccionar" />
+            </LinearLayout>
+
+
+            <EditText
+                android:id="@+id/direccionTxt4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:autofillHints="asd"
+                android:hint="Numero de casa"
+                android:inputType="text"
+                android:textColorHint="@color/purple" />
+
+            <EditText
+                android:id="@+id/direccionTxt5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:autofillHints="asd"
+                android:hint="Numero de Referencia"
+                android:inputType="text"
+                android:textColorHint="@color/purple" />
+
+            <EditText
+                android:id="@+id/direccionTxt6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:autofillHints="asd"
+                android:hint="Pais"
+                android:inputType="text"
+                android:textColorHint="@color/purple" />
+
+            <EditText
+                android:id="@+id/direccionTxt7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:autofillHints="asd"
+                android:hint="Departamento"
+                android:inputType="text"
+                android:textColorHint="@color/purple" />
+
+            <Button
+                android:id="@+id/direccionBtnAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_3x"
+                android:layout_marginTop="@dimen/space_5x"
+                android:layout_marginEnd="@dimen/space_3x"
+                android:background="@drawable/add_food_action_bacground_orange"
+                android:text="Agregar Direccion"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

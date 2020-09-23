@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.fm.modules.app.carrito.PedidoNoRegistrado">
+    <TextView
+        style="@style/TextViewTitleStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:maxLines="2"
+        android:text="@string/order_processed" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.7"
+        android:src="@drawable/motorista2" />
+
+    <TextView
+        style="@style/TextViewSubTitleStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/space_2x"
+        android:layout_marginEnd="@dimen/space_2x"
+        android:layout_weight="1"
+        android:gravity="start|center_vertical"
+        android:maxLines="2"
+        android:text="@string/order_not_in_way" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/space_2x"
+        android:layout_marginEnd="@dimen/space_2x"
+        android:layout_weight="1"
+        android:gravity="start|center_vertical"
+        android:maxLines="2"
+        android:text="@string/order_not_in_apg"
+        android:textColor="@color/purple" />
+
+    <Button
+        android:id="@+id/orderToInicio2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/space_2x"
+        android:layout_marginEnd="@dimen/space_2x"
+        android:layout_weight="1.1"
+        android:background="@color/orange"
+        android:maxLines="2"
+        android:text="@string/home"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.1"
+        android:maxLines="2" />
+
+</LinearLayout>
