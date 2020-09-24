@@ -37,6 +37,7 @@ public class OpcPlatilloSeleccionado extends AppCompatActivity {
     private OpcionesDeSubMenuSeleccionado opcionesDeSubMenuSeleccionado;
 
     Long idPlatilloSeleccionado;
+    String nombrePlatillo;
     AppCompatTextView tvFoodName;
     RecyclerView rvComplementosArea;
 
@@ -49,10 +50,13 @@ public class OpcPlatilloSeleccionado extends AppCompatActivity {
         setContentView(R.layout.frg_food_complements2);
 
         idPlatilloSeleccionado = getIntent().getLongExtra("idPlatilloSeleccionado", 1L);
+        nombrePlatillo = getIntent().getStringExtra("nombrePlatillo");
         Toast.makeText(this, "Platillo id: " +idPlatilloSeleccionado, Toast.LENGTH_SHORT).show();
 
         tvFoodName = findViewById(R.id.tvFoodName);
         rvComplementosArea = findViewById(R.id.rvComplementsArea);
+
+        tvFoodName.setText(nombrePlatillo);
 
         opcionesPlatillo.execute();
 
@@ -90,8 +94,7 @@ public class OpcPlatilloSeleccionado extends AppCompatActivity {
             super.onPostExecute(opcionesDeSubMenuSelec);
             try {
                 if (!opcionesDeSubMenuSelec.isEmpty()){
-                    tvFoodName.setText(opcionesDeSubMenuSelec.get(0).getPlatilloSeleccionado().getPlatillo().getNombre());
-
+                    //tvFoodName.setText(opcionesDeSubMenuSelec.get(0).getPlatilloSeleccionado().getPlatillo().getNombre());
                     RecyclerOpcionesSeleccionadoAdapter adapter = new RecyclerOpcionesSeleccionadoAdapter(getApplicationContext(), opcionesDeSubMenuSelec);
                     rvComplementosArea.setLayoutManager(new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false));
                     rvComplementosArea.setAdapter(adapter);
@@ -99,6 +102,7 @@ public class OpcPlatilloSeleccionado extends AppCompatActivity {
                     adapter.notifyDataSetChanged();
                     //Toast.makeText(getApplicationContext(), "Pedidso Cargados" +opcionesDeSubMenuSelec.size(), Toast.LENGTH_SHORT).show();
                 }else{
+                    Logued.pedidoLogued = Logued.platillosSeleccionadoLogued.getPedido();
                     Toast.makeText(getApplicationContext(), "Pedidos No Cargados" +opcionesDeSubMenuSelec.size(), Toast.LENGTH_SHORT).show();
                 }
             }catch (Throwable throwable){

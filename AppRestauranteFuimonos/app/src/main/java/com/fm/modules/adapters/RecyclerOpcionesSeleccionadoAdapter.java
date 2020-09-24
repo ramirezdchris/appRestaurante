@@ -81,6 +81,9 @@ public class RecyclerOpcionesSeleccionadoAdapter extends RecyclerView.Adapter<Re
         }
 
         public void asignarDatos(final OpcionesDeSubMenuSeleccionado opciones){
+            if(opciones == null){
+
+            }
             tvOpcionSubMenu.setText(opciones.getOpcionesDeSubMenu().getSubMenu().getTitulo());
             tvOpcion.setText(opciones.getOpcionesDeSubMenu().getNombre());
             Logued.pedidoLogued = opciones.getPlatilloSeleccionado().getPedido();

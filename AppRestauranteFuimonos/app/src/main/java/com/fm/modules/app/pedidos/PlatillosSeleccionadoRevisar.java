@@ -81,7 +81,7 @@ public class PlatillosSeleccionadoRevisar extends AppCompatActivity {
 
                 PlatilloSeleccionadoService platilloSeleccionadoService = new PlatilloSeleccionadoService();
                 platilloSeleccionados = platilloSeleccionadoService.platilloSeleccionadoPorPedido(String.valueOf(idPedido));
-                //Logued.pedidoLogued = platilloSeleccionados;
+                //Logued.pedidoLogued = platilloSeleccionados.get(0).getPedido();
 
             }catch (Exception e){
                 System.out.println("Error en UnderThreash:" +e.getMessage() +" " +e.getClass());
@@ -171,8 +171,9 @@ public class PlatillosSeleccionadoRevisar extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), PrincipalRestaurante.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     Toast.makeText(PlatillosSeleccionadoRevisar.this, "Pedido enviado...", Toast.LENGTH_LONG).show();
+                    Logued.pedidoLogued = new Pedido();
                 }
-                Logued.pedidoLogued = new Pedido();
+
                 reiniciarAsynkProcess();
 
             }catch (Throwable throwable){

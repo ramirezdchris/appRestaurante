@@ -98,7 +98,10 @@ public class RecyclerPlatillosSeleccionadoAdapter extends RecyclerView.Adapter<R
                     Intent intent = new Intent(context, OpcPlatilloSeleccionado.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.putExtra("idPlatilloSeleccionado", platilloSeleccionado.getPlatilloSeleccionadoId());
+                    intent.putExtra("nombrePlatillo", platilloSeleccionado.getPlatillo().getNombre());
                     context.startActivity(intent);
+                    //Logued.pedidoLogued = platilloSeleccionado.getPedido();
+                    Logued.platillosSeleccionadoLogued = platilloSeleccionado;
                 }
             });
             verImagen(platilloSeleccionado.getPlatillo().getImagen());
