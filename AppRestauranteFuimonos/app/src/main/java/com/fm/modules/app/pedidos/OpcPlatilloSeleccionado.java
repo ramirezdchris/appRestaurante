@@ -46,7 +46,7 @@ public class OpcPlatilloSeleccionado extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.frg_food_complements);
+        setContentView(R.layout.frg_food_complements2);
 
         idPlatilloSeleccionado = getIntent().getLongExtra("idPlatilloSeleccionado", 1L);
         Toast.makeText(this, "Platillo id: " +idPlatilloSeleccionado, Toast.LENGTH_SHORT).show();

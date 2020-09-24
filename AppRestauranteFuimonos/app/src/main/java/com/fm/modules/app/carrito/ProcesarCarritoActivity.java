@@ -34,13 +34,13 @@ public class ProcesarCarritoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_procesar_carrito);
         direccion1 = (EditText) findViewById(R.id.direccionTxt1);
         direccion2 = (EditText) findViewById(R.id.direccionTxt2);
-        direccion3 = (TextView) findViewById(R.id.direccionTxt3);
+        //direccion3 = (TextView) findViewById(R.id.direccionTxt3);
         direccion4 = (EditText) findViewById(R.id.direccionTxt4);
         direccion5 = (EditText) findViewById(R.id.direccionTxt5);
         direccion6 = (EditText) findViewById(R.id.direccionTxt6);
         direccion7 = (EditText) findViewById(R.id.direccionTxt7);
         btnAgregar = (Button) findViewById(R.id.direccionBtnAdd);
-        selectLocation = (Button) findViewById(R.id.proceCarBtnSelecLc);
+        //selectLocation = (Button) findViewById(R.id.proceCarBtnSelecLc);
         listeneragregar();
         //listenerSeleccionar();
         datosLast();
@@ -153,10 +153,10 @@ public class ProcesarCarritoActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Ingrese una Colonia", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if ("".equals(direccion3.getText().toString())) {
+        /*if ("".equals(direccion3.getText().toString())) {
             Toast.makeText(getApplicationContext(), "Ingrese una Referencia", Toast.LENGTH_SHORT).show();
             return false;
-        }
+        }*/
         /*LatLng ln = GlobalCarrito.latLngSeleccionada;
         if (ln == null) {
             Toast.makeText(getApplicationContext(), "Selecciona una Ubicaion", Toast.LENGTH_SHORT).show();

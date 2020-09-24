@@ -46,7 +46,7 @@ public class RecyclerPlatillosSeleccionadoAdapter extends RecyclerView.Adapter<R
     @NonNull
     @Override
     public RecyclerPlatillosSeleccionadoAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.holder_item_food, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.holder_item_food3, parent, false);
         return new RecyclerPlatillosSeleccionadoAdapter.ViewHolder(view);
     }
 

@@ -38,7 +38,7 @@ public class RecyclerOpcionesSeleccionadoAdapter extends RecyclerView.Adapter<Re
     @NonNull
     @Override
     public RecyclerOpcionesSeleccionadoAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_sub_menu_opciones, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_sub_menu_opciones2, parent, false);
         return new RecyclerOpcionesSeleccionadoAdapter.ViewHolder(view);
     }
 
@@ -77,7 +77,7 @@ public class RecyclerOpcionesSeleccionadoAdapter extends RecyclerView.Adapter<Re
             //btnTomarPedido = itemView.findViewById(R.id.btnTomarPedido);
 
             tvOpcionSubMenu = itemView.findViewById(R.id.tvOpcionSubMenu);
-            //tvOpcion = itemView.findViewById(R.id.tvOpcion);
+            tvOpcion = itemView.findViewById(R.id.tvOpcion);
         }
 
         public void asignarDatos(final OpcionesDeSubMenuSeleccionado opciones){

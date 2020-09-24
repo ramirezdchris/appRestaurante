@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        style="@style/SelectableBorderlesStyle"
+        android:id="@+id/ivBack"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="@dimen/space_2x"
+        android:layout_marginTop="@dimen/space_3x"
+        android:src="@drawable/ic_left_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/TextViewTitleStyle"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:id="@+id/tvSelectComplements"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/select_complements"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivBack"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:id="@+id/separator1"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/space_2x"
+        android:layout_marginStart="@dimen/space_6x"
+        android:layout_marginEnd="@dimen/space_6x"
+        android:background="@color/separatorColor"
+        app:layout_constraintStart_toStartOf="@+id/tvSelectComplements"
+        app:layout_constraintTop_toBottomOf="@+id/tvSelectComplements"
+        app:layout_constraintEnd_toEndOf="@+id/tvSelectComplements"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardFoodQuantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_2x"
+        android:layout_marginTop="@dimen/space_2x"
+        android:layout_marginEnd="@dimen/space_2x"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/separator1">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvFoodName"
+                style="@style/TextViewTitleStyle"
+                android:layout_width="370dp"
+                android:layout_height="61dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@{viewModel.food.name}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintVertical_chainStyle="spread"
+                tools:text="La Doble!" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <View
+        android:id="@+id/separator2"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/space_default"
+        android:layout_marginTop="@dimen/space_2x"
+        android:layout_marginEnd="@dimen/space_default"
+        android:background="@color/separatorColor"
+        app:layout_constraintBottom_toBottomOf="@+id/cardFoodQuantity"
+        app:layout_constraintEnd_toEndOf="@+id/cardFoodQuantity"
+        app:layout_constraintStart_toStartOf="@+id/cardFoodQuantity"
+        app:layout_constraintTop_toBottomOf="@+id/cardFoodQuantity" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvComplementsArea"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/separator3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardFoodQuantity"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <View
+        android:id="@+id/separator3"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/space_default"
+        android:layout_marginEnd="@dimen/space_default"
+        android:layout_marginBottom="32dp"
+        android:background="@color/separatorColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/rvComplementsArea"
+        app:layout_constraintStart_toStartOf="@+id/rvComplementsArea"
+        app:layout_constraintTop_toBottomOf="@+id/rvComplementsArea"
+        tools:ignore="MissingConstraints" />
+
+    <!--<ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="visible"
+        tools:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/svComplementsArea"
+        app:layout_constraintTop_toTopOf="@+id/svComplementsArea"
+        app:layout_constraintEnd_toEndOf="@+id/svComplementsArea"
+        app:layout_constraintBottom_toBottomOf="@+id/svComplementsArea" /> -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
