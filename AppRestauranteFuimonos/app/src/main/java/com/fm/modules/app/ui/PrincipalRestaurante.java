@@ -1,8 +1,11 @@
 package com.fm.modules.app.ui;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.CompoundButton;
@@ -14,6 +17,7 @@ import android.widget.Toast;
 import com.fm.apprestaurantefuimonos.R;
 import com.fm.modules.app.carrito.RestauranteMenuActivity;
 import com.fm.modules.app.commons.utils.Utilities;
+import com.fm.modules.app.login.Logon;
 import com.fm.modules.app.login.Logued;
 import com.fm.modules.app.pedidos.Principal;
 import com.fm.modules.models.Image;
@@ -27,7 +31,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -45,17 +51,21 @@ public class PrincipalRestaurante extends AppCompatActivity {
 
     private AppCompatImageView imageView;
     private TextView tvRestauranteNombre;
-    private TextView tvRestauranteHorario;
+    private AppCompatTextView tvCerrarSesion;
     private Switch aSwitch;
 
     Restaurante restaurante = Logued.restauranteLogued;
 
     ActualizarDisponibilidad actualizar = new ActualizarDisponibilidad();
 
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal_restaurante);
+        sharedPreferences = getApplicationContext().getSharedPreferences("LogonData", Context.MODE_PRIVATE);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -88,11 +98,27 @@ public class PrincipalRestaurante extends AppCompatActivity {
 
         imageView = headerView.findViewById(R.id.imageView);
         tvRestauranteNombre = headerView.findViewById(R.id.tvRestauranteNombre);
-        tvRestauranteHorario = headerView.findViewById(R.id.tvRestauranteHorario);
+        tvCerrarSesion = headerView.findViewById(R.id.tvCerrarSesion);
         aSwitch = headerView.findViewById(R.id.swDisponible);
 
         tvRestauranteNombre.setText(restaurante.getNombreRestaurante());
-        tvRestauranteHorario.setText(restaurante.getRepresentante());
+        tvCerrarSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    editor = sharedPreferences.edit();
+                    editor.putString("email", "neles");
+                    editor.putString("password", "neles");
+                    editor.commit();
+                } catch (Exception ignore) {
+                }
+
+                Logued.restauranteLogued = null;
+                Intent intent = new Intent(getApplicationContext(), Logon.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
 
         if(restaurante.getDisponible() == null){
             aSwitch.setChecked(true);
@@ -115,6 +141,29 @@ public class PrincipalRestaurante extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.principal_restaurante, menu);
+        return true;
+    }*/
+
+
+    /*@Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Toast.makeText(getApplicationContext(), "menuHome", Toast.LENGTH_SHORT).show();
+                try {
+                    editor = sharedPreferences.edit();
+                    editor.putString("email", "neles");
+                    editor.putString("password", "neles");
+                    editor.commit();
+                } catch (Exception ignore) {
+                }
+
+                Logued.restauranteLogued = null;
+                Intent intent = new Intent(getApplicationContext(), Logon.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                break;
+        }
         return true;
     }*/
 

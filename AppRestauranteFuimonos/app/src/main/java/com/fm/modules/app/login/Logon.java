@@ -2,6 +2,7 @@ package com.fm.modules.app.login;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -40,6 +41,9 @@ public class Logon extends AppCompatActivity {
     ProgressBar progressBar;
     Acceder acceder = new Acceder();
 
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +53,7 @@ public class Logon extends AppCompatActivity {
         passInput = (TextInputEditText) findViewById(R.id.etPasswordlogin);
         buttonLogin = (Button) findViewById(R.id.btnLogin);
 
+        reiniciarAsynkProcess();
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +64,7 @@ public class Logon extends AppCompatActivity {
                 }
             }
         });
+        sharedListener();
 
 
     }
@@ -101,6 +107,17 @@ public class Logon extends AppCompatActivity {
         return b;
     }
 
+    private void sharedListener() {
+        sharedPreferences = getSharedPreferences("LogonData", MODE_PRIVATE);
+        String usuarioPref = sharedPreferences.getString("email", "neles");
+        String passwPref = sharedPreferences.getString("password", "neles");
+        if (!"neles".equals(usuarioPref) && !"neles".equals(passwPref)) {
+            usuario = usuarioPref;
+            passw = passwPref;
+            acceder.execute();
+        }
+    }
+
     public void limpiar() {
         userInput.setText("");
         passInput.setText("");
@@ -129,6 +146,17 @@ public class Logon extends AppCompatActivity {
                     v = restauranteService.signInRestaurante(r);
                     if (v > 0){
                         r = restauranteService.obtenerRestaurantePorId((long) v);
+                        if (r != null) {
+                            editor = sharedPreferences.edit();
+                            editor.putString("email", usuario);
+                            editor.putString("password", passw);
+                            editor.apply();
+                        } else {
+                            editor = sharedPreferences.edit();
+                            editor.putString("email", "neles");
+                            editor.putString("password", "neles");
+                            editor.commit();
+                        }
                     }
                     Logued.restauranteLogued = r;
                     System.out.println("Restaurante Iniciado:" +Logued.restauranteLogued.toString());

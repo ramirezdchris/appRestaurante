@@ -117,6 +117,7 @@ public class PagoActivity extends AppCompatActivity {
                 btnEfectivo.setEnabled(false);
                 obtenerPedido();
                 guardarPedidoAsync.execute();
+                btnPagar.setEnabled(false);
             }
         });
     }
@@ -238,6 +239,7 @@ public class PagoActivity extends AppCompatActivity {
         protected void onPostExecute(Integer b) {
             super.onPostExecute(b);
             int procesed = b;
+            btnPagar.setEnabled(true);
             switch (procesed) {
                 case 0:
                     AlertDialog dialog = new AlertDialog.Builder(PagoActivity.this)

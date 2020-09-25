@@ -72,11 +72,11 @@ public class Principal extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.menuHome:
+            case R.id.menuHome2:
                 Toast.makeText(Principal.this, "menuHome", Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.menuPerfil:
+            case R.id.menuPerfil2:
                 Toast.makeText(Principal.this, "menuShoppingCart", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(Principal.this, PerfilDriver.class);
                 startActivity(i);
